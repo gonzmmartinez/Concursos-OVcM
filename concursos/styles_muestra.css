@@ -14,7 +14,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 30px;
-  width: 100%;
+  width: 60%;
   margin: 0 auto;
 }
 
@@ -43,10 +43,17 @@
 }
 
 /* Título */
+.tarjeta-informe h4 {
+  margin: 15px 0px 10px 0px;
+  font-size: 1.25rem;
+  color: #333333;
+}
+
 .tarjeta-informe h3 {
   font-family: 'Exo', sans-serif;
-  font-size: 1.25rem;
-  padding: 20px 0px;
+  font-size: 1rem;
+  padding: 5px;
+  padding-bottom: 20px;
   color: #3A1D51;
   margin: 0;
   text-transform: uppercase;
@@ -117,4 +124,77 @@
   flex: 1;
   font-size: 1rem;
   line-height: auto;
+  text-indent: 20px;
+}
+
+/* BOTONES PRINCIPALES */
+.botonera-concursos {
+  display: flex;
+  gap: 1rem;
+  width: 60%;
+  margin: 0px auto;
+}
+
+.boton-concurso {
+  flex: 1 1 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px 25px;
+  background-color: var(--main-color-light);
+  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  border: none; /* sin borde */
+  border-radius: 5px;
+}
+
+.boton-concurso:hover {
+  background-color: var(--accent-color); /* color suave al hacer hover */
+}
+
+.boton-concurso:hover .icono-boton {
+  transform: scale(1.1) rotate(2deg);
+}
+
+.icono-boton {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 0.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Si usás <img>, esto asegura que no se estire */
+.icono-boton img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.texto-boton {
+  position: relative; /* necesario para que ::after se posicione respecto al texto */
+  font-size: 1.25rem;
+  text-align: center;
+  font-family: 'Exo', sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-top: 15px;
+  color: white;
+}
+
+.texto-boton::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -5px;
+  transform: translateX(-50%) scaleX(0);
+  transform-origin: center;
+  width: 60%;
+  height: 2px;
+  background-color: white;
+  transition: transform 0.3s ease;
+}
+
+.boton-concurso:hover .texto-boton::after {
+  transform: translateX(-50%) scaleX(1);
 }

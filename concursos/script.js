@@ -1,67 +1,45 @@
-const contenedorInformes = document.querySelector(".concursos-muestra");
-const JSON_URL = "../documentos-concursos.json";
+const contenedorDosieres = document.querySelector(".concursos-muestra");
+const JSON_URL = "./documentos_concursos.json";
 
-async function cargarInformesAnuales() {
+async function cargarDosieres() {
   try {
     const res = await fetch(JSON_URL);
     const documentos = await res.json();
 
-    // Informes anuales
-    const informesAnuales = documentos
+    // Filtrar y ordenar dosieres
+    const dosieres = documentos
       .filter(doc => {
-        if (Array.isArray(doc.tipo_documento)) {
-          return doc.tipo_documento.includes("Informe anual");
+        if (Array.isArray(doc.tipo_concurso)) {
+          return doc.tipo_concurso.includes("Tesis");
         }
-        return doc.tipo_documento === "Informe anual";
+        return doc.tipo_concurso === "Tesis";
       })
       .sort((a, b) => new Date(b.fecha) - new Date(a.fecha));
 
-    if (informesAnuales.length === 0) {
-      contenedorInformes.innerHTML = "<p>No se encontraron informes anuales.</p>";
+    if (dosieres.length === 0) {
+      contenedorDosieres.innerHTML = "<p>No se encontraron dosieres.</p>";
     } else {
       const html = `<div class="grid-informes">
-        ${informesAnuales.map(doc => `
-          <div class="tarjeta-informe">
-            <a href="../?doc=${doc.slug}">
-              <img src="${doc.portada}" alt="Portada de ${doc.titulo}">
-              <h3>${doc.titulo}</h3>
-            </a>
-          </div>
-        `).join("")}
+        ${dosieres.map(doc => {
+          const anio = new Date(doc.fecha).getFullYear();
+          return `
+            <div class="tarjeta-informe">
+              <a href="${doc.archivo}" target="_blank" rel="noopener noreferrer">
+                <img src="${doc.portada}" alt="Portada de ${doc.titulo}">
+                <h4>${anio}</h4>
+                <h3>${doc.titulo}</h3>
+              </a>
+            </div>
+          `;
+        }).join("")}
       </div>`;
-      contenedorInformes.innerHTML = html;
-    }
-
-    // Resúmenes ejecutivos del informe anual
-    const resumenesEjecutivos = documentos
-      .filter(doc => {
-        if (Array.isArray(doc.tipo_documento)) {
-          return doc.tipo_documento.includes("Resumen ejecutivo del informe anual");
-        }
-        return doc.tipo_documento === "Resumen ejecutivo del informe anual";
-      })
-      .sort((a, b) => new Date(b.fecha) - new Date(a.fecha));
-
-    if (resumenesEjecutivos.length === 0) {
-      contenedorResumenes.innerHTML = "<p>No se encontraron resúmenes ejecutivos.</p>";
-    } else {
-      const htmlResumenes = `<div class="grid-informes">
-        ${resumenesEjecutivos.map(doc => `
-          <div class="tarjeta-informe">
-            <a href="./?doc=${doc.slug}">
-              <img src="${doc.portada}" alt="Portada de ${doc.titulo}">
-              <h3>${doc.titulo}</h3>
-            </a>
-          </div>
-        `).join("")}
-      </div>`;
-      contenedorResumenes.innerHTML = htmlResumenes;
+      contenedorDosieres.innerHTML = html;
     }
 
   } catch (error) {
-    contenedorInformes.innerHTML = `<p>Error al cargar los informes anuales.</p>`;
-    contenedorResumenes.innerHTML = `<p>Error al cargar los resúmenes ejecutivos.</p>`;
+    contenedorDosieres.innerHTML = `<p>Error al cargar los dosieres.</p>`;
+    console.error("Error al cargar dosieres:", error);
   }
 }
 
-cargarInformesAnuales();
+cargarDosieres();

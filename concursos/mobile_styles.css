@@ -308,4 +308,25 @@
         font-size: 0.9rem;
         text-align: center;
     }
+
+    /* BOTONERA */
+    .botonera-concursos {
+        flex-direction: column;
+    }
+
+    .boton-concurso {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 0.75rem;
+        text-align: center;
+    }
+
+    .icono {
+        margin: 0;
+    }
+
+    .texto-boton {
+        font-size: 1rem;
+    }
 }
