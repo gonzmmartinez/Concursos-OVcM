@@ -147,10 +147,12 @@
   transition: transform 0.2s ease, box-shadow 0.3s ease, background-color 0.3s ease;
   border: none; /* sin borde */
   border-radius: 5px;
+  text-decoration: none;
 }
 
 .boton-concurso:hover {
   background-color: var(--accent-color); /* color suave al hacer hover */
+  text-decoration: none;
 }
 
 .boton-concurso:hover .icono-boton {
