@@ -200,3 +200,18 @@
 .boton-concurso:hover .texto-boton::after {
   transform: translateX(-50%) scaleX(1);
 }
+
+.boton-imagen {
+  flex: 1; /* para que ambas imágenes ocupen el mismo espacio */
+}
+
+.imagen-boton {
+  width: 100%;
+  height: auto;
+  transition: transform 0.3s ease;
+  border-radius: 8px; /* opcional, para esquinas redondeadas */
+}
+
+.imagen-boton:hover {
+  transform: scale(1.02);
+}
