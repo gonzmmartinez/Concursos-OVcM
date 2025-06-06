@@ -132,7 +132,7 @@
         style="display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 25px; margin-bottom: 50px;">
         <h2
             style="margin: 0; font-family: 'Exo', sans-serif; font-size: 1.75rem; text-transform: none; color: #333333;">
-            CONVOCATORIAS ACTIVAS</h2>
+            ÚLTIMAS CONVOCATORIAS</h2>
     </div>
 
     <div class="botonera-concursos" style="width: 50%">
@@ -146,25 +146,16 @@
         </a>
     </div>
 
-    <hr style="width: 25%; color: #fafafa; margin: 100px auto 50px auto">
-
-    <div
-        style="display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 25px; margin-bottom: 50px;">
-        <h2
-            style="margin: 0; font-family: 'Exo', sans-serif; font-size: 1.75rem; text-transform: uppercase; color: #333333;">
-            Bases y condiciones</h2>
+    <!-- MODAL -->
+    <div id="modal-overlay" class="modal-overlay hidden">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <h2 id="modal-title"></h2>
+            <p id="modal-description">.</p>
+            <a id="modal-link" href="#" target="_blank" class="modal-button">Ver bases y condiciones</a>
+        </div>
     </div>
 
-    <div class="botonera-concursos">
-        <a class="boton-concurso" href="./tesis-de-grado/">
-            <img src="./svg/document_w.svg" alt="Icono 1" class="icono-boton">
-            <div class="texto-boton">Concurso de tesis de grado</div>
-        </a>
-        <a class="boton-concurso" href="./diseno-grafico/">
-            <img src="./svg/diseno_grafico_w.svg" alt="Icono 2" class="icono-boton">
-            <div class="texto-boton">Concurso de diseño gráfico</div>
-        </a>
-    </div>
 
     <hr style="width: 25%; color: #fafafa; margin: 100px auto 50px auto">
 
@@ -225,6 +216,7 @@
     </footer>
 
     <script src="./script.js"></script>
+    <script src="./modal_script.js"></script>
 </body>
 
 </html>
